@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_TITLE, NAV_LINKS } from '../resources';
+
+const aboutLink = NAV_LINKS.find(link => link.href === "/about");
+const pageTitle = `${aboutLink?.label ?? "About"} - ${SITE_TITLE}`;
+
+---
+
+<BaseLayout title={pageTitle}>
+<h3>What is a Buben?</h3>
+<p>The <span class="dotted-underline" title="/ˈbuː.bɛn/">buben</span> is an Eastern European frame drum, similar in shape to a tambourine or pandeiro, but played differently. Unlike those hand-struck instruments, the buben is typically played using a combination of wooden beater strikes and hand or palm hits to produce varied rhythms. The beater delivers deeper, more forceful tones, while palm strikes primarily activate the jingles, adding brightness and texture. It’s been part of Belarusian folk traditions for centuries, often used in dances and celebrations.</p>
+</BaseLayout>
+
+
+
+

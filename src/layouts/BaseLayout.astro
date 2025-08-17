@@ -1,0 +1,49 @@
+---
+import { NAV_LINKS, SITE_TITLE } from "../resources";
+import "../styles/global.css";
+
+const title = Astro.props.title || SITE_TITLE;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Merriweather&display=swap" rel="stylesheet">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<h1><a href="/">{SITE_TITLE}</a></h1>
+			<nav>
+				<ul>
+					{NAV_LINKS.map(link => (<li><h2><a href={link.href}>{link.label}</a></h2></li>))}
+				</ul>
+			</nav>
+			<h2></h2>
+		</header>
+		<div id="content">
+			<slot />
+		</div>		
+	</body>
+</html>
+
+<style>
+nav {
+  text-align: center; /* Optional: centers nav block itself */
+}
+
+nav ul {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  gap: 2rem;                /* Space between items */
+  list-style: none;        /* Remove bullets */
+  padding: 0;
+  margin: 0;
+}
+
+</style>

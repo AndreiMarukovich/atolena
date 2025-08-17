@@ -1,0 +1,31 @@
+---
+import artefacts from '../data/artefacts.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const { id } = Astro.params;
+const artefact = artefacts.find(p => p.id === id);
+
+export async function getStaticPaths() {
+  return artefacts.map(p => ({ params: { id: p.id } }));
+}
+---
+
+<BaseLayout title={`#${id} - Atólena`}>
+    <h3>#{id}</h3>
+    <p>{artefact?.description || 'No description available.'}</p>
+    <div>
+	    {artefact?.images.map ((x) => (
+		    <div><img src={`/artefact/${id}/${x}`} class="artefact-image" /></div>
+	    ))}
+
+    </div>
+</BaseLayout>
+
+<style>
+    .artefact-image {
+        width: 100%;
+        max-width: 650px;
+        height: auto;
+        margin: 1rem 0;
+    }
+</style>

@@ -1,0 +1,73 @@
+---
+const { id, status } = Astro.props
+
+const targetUrl = (status === "0") ? `` : `/${id}`;
+const isInProgress = status === "0";
+const isAvailable = status === "1";
+---
+
+<div class="card">
+    {isInProgress && <div class="card-banner">Coming together</div>}
+    {isAvailable && <div class="card-banner">Available</div>}
+    {isInProgress ? (
+        <img class="card-hero-image" src={`/artefact/${id}/atolena-${id}-00.jpg`} alt={`Image for ${id}`} />
+    ) : (
+        <a href=`${targetUrl}`>
+            <img class="card-hero-image" src={`/artefact/${id}/atolena-${id}-00.jpg`} alt={`Image for ${id}`} />
+        </a>
+    )}
+
+    
+    <div class="card-id">
+        <h1>#{id}</h1>
+    </div>
+</div>
+
+<style>
+    .card {
+        position: relative;
+        display: inline-block;
+        min-width: 450px;
+        min-height: 450px;
+        width: 450px;
+        height: 450px;
+        background-color: #f0f0f0;
+    }
+
+    .card img {
+        display: block;
+    }
+
+    .card-id {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        pointer-events: none;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .card-hero-image {
+        width: 450px;
+        height: 450px;
+    }
+
+    .card-banner {
+        font-family: "Poppins", sans-serif;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 0.5rem 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        text-align: center;        
+        font-size: 1.2rem;
+        font-weight: bold;
+        z-index: 1;
+    }
+</style>

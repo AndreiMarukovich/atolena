@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import artefacts from '../data/artefacts.json';
+import Card from '../components/Card.astro';
+---
+
+<BaseLayout>
+	<div class="cards">
+	{artefacts.map ((x) => (
+		<Card id={x.id} status={x.status} />
+	))}
+	</div>
+</BaseLayout>
+
+<style>
+	.cards {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 4rem;
+		padding: 0 4rem 4rem 4rem;
+	}
+</style>
