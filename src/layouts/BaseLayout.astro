@@ -16,6 +16,16 @@ const title = Astro.props.title || SITE_TITLE;
 		<link rel="manifest" href="/site.webmanifest">
 		<title>{title}</title>
 	</head>
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NV22WCEYRM"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'G-NV22WCEYRM');
+	</script>
+
 	<body>
 		<header>
 			<h1><a href="/">{SITE_TITLE}</a></h1>
